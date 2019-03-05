@@ -1,0 +1,57 @@
+# Comando Utiles para MONGODB
+
+## En MONGODB se puede correr comandos de JavaScript
+
+ - use "nombre de la base de datos" 
+    -(Funciona para entrar a la base de datos que se va a utilizar)
+
+ - db 
+    -(Funciona para ver en que base de datos que se esta utilizando)
+
+ - show dbs 
+    -(Funciona para ver las bases de datos que tenemos)
+
+ - show collections 
+    -(Funciona para ver la collections (tablas) en la base de datos que se esta utilizando)
+
+- db."nombre de la collection".renameCollection(nuevo nombre de la collection) 
+    -(Funciona para insertar documento en una collection)
+
+ - db."nombre de la base de datos".insert(nombre del documento) 
+    -(Funciona para insertar documento en una collection)
+
+-db."nombre de collection".find()
+    -(Funciona para buscar los documento en la collection y mostrarlos)
+
+-db."nombre de collection".find().pretty()
+    -(Funciona para buscar los documento en la collection y mostrarlo de forma mas leyible)
+
+-db."nombre de collection".count()
+    -(Funciona para contar los documento que existen en una collection)
+
+# Eliminar una DB
+    1. Entrar a la base de datos que desea eliminar (use "nombre de base de datos")
+    2. Para eliminar use el siguiente comando ---> ( db.dropDatabase() )
+
+# Eliminar una Collection
+    1. Entrar a la base de datos que desea eliminar (use "nombre de base de datos")
+    2. Ver las collection en la base de datos ( show collection )
+    3. Para eliminar use el siguiente comando ---> ( db."nombre de collection.drop"() )
+
+
+# BackUp y Restore
+    1. Entre a una Terminal
+    
+    2.1 ## BackUp de Toda la Base de datos
+        - mongodump -d "nombre de la base de datos"
+    
+    2.2 ## BackUp de una collection
+        - mongodump -d "nombre de la base de datos" -c "nombre de la collection"
+    
+    3. Para restaurar localarse fuera de donde esta el backup 
+
+    4.1 ## Restore DB
+        -mongorestore
+
+    4.3 ## Restore collection
+        - mongorestore -nsFrom "nombre de la base de datos donde esta la collection.*" -nsTo "nombre de la base de datos donde de restaurara.*"
