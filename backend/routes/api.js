@@ -1,10 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-var usersApi = require('./api/users');
-var thingsApi = require('./api/things');
+function apiInit(db){
+    var usersApi = require('./api/users');
+    var encuestaApi = require('./api/encuesta')(db);
 
-router.use('/users',usersApi);
-router.use('/things',thingsApi);
+    router.use('/users',usersApi);
+    router.use('/encuesta',encuestaApi);
 
-module.exports = router;
+    return router;
+}
+
+
+
+module.exports = apiInit;
