@@ -18,16 +18,47 @@ function catalogoModelInit(db){
 
     }//GetAllProducts
 
-    lib.getProductById = (prodID, handler)=>{
-        cat.findOne({ "_id": new ObjectId(prodID)}, (err, doc)=>{
+    lib.getProductByYear = (year, handler)=>{
+        cat.findOne({ 'year': year}, (err, doc)=>{
             if(err){
               handler(err, null);
             }else{
               handler(null, doc);
             }
           }); // findOne
-      } // getProductById
+      } // getProductByYear
     
+      lib.searchByMarca = (marca, handler)=>{
+        var queryObject= {"marca": {"$in": Array.isArray(marca)? marca: [marca]}};
+        cat.find(queryObject).toArray((err, docs) => {
+          if(err){
+            handler(err, null);
+          }else{
+            handler(null, docs);
+          }
+        }); //toArray
+      } // getProductByMarca      
+
+      lib.searchByModelo = (modelo, handler)=>{
+        var queryObject= {"modelo": {"$in": Array.isArray(modelo)? modelo: [modelo]}};
+        cat.find(queryObject).toArray((err, docs) => {
+          if(err){
+            handler(err, null);
+          }else{
+            handler(null, docs);
+          }
+        }); //toArray
+      } // getProductByModelo
+
+      lib.addNewProduct = (newPro, handler)=>{
+        cat.insertOne(newPro, (err, r)=>{
+          if(err){
+            handler(err, null);
+          }else{
+            handler(null, r.result);
+          }
+        }); //insert One
+      }// addNewPro
     return lib;
 }
 
