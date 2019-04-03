@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+
+import Encuesta from './Components/pages/encuesta/Encuesta';
+import Login from './Components/pages/login/Login';
+import Footer from './Components/generics/footer/Footer';
+import SignIn from './Components/pages/signin/Signin';
 import './App.css';
 
-class App extends Component {
-  render() {
+function Home(){
+  return (<h1>Home</h1>)
+}
+
+class App extends Component{
+  render (){
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <nav className="Nav">
+            <li><Link to="/">Home</Link> </li>
+            <li><Link to="/encuesta">Encuesta</Link> </li>
+            <li><Link to="/signin">SignIn</Link> </li>
+            <li><Link to="/login">Login</Link> </li>
+          </nav>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/encuesta" component={Encuesta}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route path="/signin" component={SignIn} />
+          <Footer></Footer>      
+        </div>
+      </Router>
     );
   }
 }
