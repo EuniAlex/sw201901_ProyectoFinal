@@ -1,22 +1,55 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Header from '../../generics/header/Header';
 import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
-
 import axios from 'axios';
 
 class Signin extends Component{
+
   constructor(){
     super();
     this.state = {
       "txtPswd":"",
-      "txtEmail":""
+      "txtEmail":"",
+      redirectTo:""
     }
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
   }
+  onChangeHandler(e){
+    let {name, value} = e.currentTarget;
+      this.setState({[name]:value});
+  }
+  onClickHandler(e){
+    e.preventDefault();
+    e.stopPropagation();
+    axios.post(
+        `api/users/new`,
+        {
+          email:this.state.txtEmail,
+          pswd:this.state.txtPswd
+        }
+      ).then(
+        (resp)=>{
+          this.setState({ redirectTo:"/login"});
+        }
+      )
+      .catch(
+        (err)=>{
+          this.setState({error:err});
+        }
+      );
+  }
   render(){
+     if(this.state.redirectTo!==""){
+       return(
+          <div>
+            <Link to={this.state.redirectTo}>Esoooooooo</Link>
+         </div>
+        )
+     }
     return (
       <div>
         <Header title = "Crear nueva cuenta"></Header>
@@ -44,29 +77,11 @@ class Signin extends Component{
               inputErrorMsg=""
               inputChangeHandler={this.onChangeHandler}
             />
-            <button onClick={this.onClickHandler}>Login</button>
+            <button onClick={this.onClickHandler}>Sign In</button>
           </fieldset>
         </Body>
       </div>
     );
-  }
-
-  onChangeHandler(e){
-    const {name, value} = e.currentTarget; //ES5 desctructor de objectos ||destructuring
-    this.setState({...this.state, [name]:value});
-  }
-  onClickHandler(e){
-    e.preventDefault();
-    e.stopPropagation();
-    //alert("Ohh hice click");
-    axios.post(
-      '/api/users/login',
-      {...this.state}
-    ).then( (resp)=>{
-      alert(resp);
-    }).catch( (err) => {
-      alert(err);
-    } );
   }
 }
 

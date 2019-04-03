@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 function apiInit(db){
-    var usersApi = require('./api/users');
+    var usersApi = require('./api/Users/users')(db);
     var encuestaApi = require('./api/Encuesta/encuesta')(db);
     var catApi = require('./api/Catalogo/catalogo')(db);
 
