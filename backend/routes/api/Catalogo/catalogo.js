@@ -10,6 +10,9 @@ function catalogoInit(db){
       'marca':'',
       'modelo':'',
       'year':'',
+      'stock':'',
+      'precio':'',
+      'image':''
     };
 
     router.post('/new', function(req,res,next){

@@ -20,7 +20,7 @@ class App extends Component{
           <nav className="nav">
             <a><Link to="/">Home</Link> </a>
             <a><Link to="/encuesta">Encuesta</Link> </a>
-            <a><Link to="/signin">SignIn</Link> </a>
+            <a><Link to="/signin">Sign In</Link> </a>
             <a><Link to="/login">Login</Link> </a>
             <a><Link to="/catalogo">Catalogo</Link> </a>
           </nav>

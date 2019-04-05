@@ -17,7 +17,7 @@ function Format(props) {
   }
 
     return(
-      <p> lps {numberFormat(props.number)}</p>
+      <p> lps {numberFormat(props.price)}</p>
     )
 
 }
