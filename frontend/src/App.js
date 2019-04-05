@@ -5,7 +5,8 @@ import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
-import Catalogo from './Components/pages/catalogo/Catalogo';
+import Catalogo from './Components/pages/catalogo/App/App';
+
 import './App.css';
 
 function Home(){
@@ -27,8 +28,8 @@ class App extends Component{
             <Route path="/" exact component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
             <Route path="/login" component={Login}></Route>
-            <Route path="/signin" component={SignIn} />
-            <Route path="/catalogo" component={Catalogo} />
+            <Route path="/signin" component={SignIn}></Route>
+            <Route path="/catalogo" component={Catalogo}></Route>
           <Footer></Footer>      
         </div>
       </Router>
