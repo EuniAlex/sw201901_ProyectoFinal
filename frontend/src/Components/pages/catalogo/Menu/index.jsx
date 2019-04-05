@@ -13,13 +13,9 @@ class Navigation extends Component {
       <div className='busque'> 
       <Segment>
       <div className='titulo'><Titulo/></div>
-      <Input
-        action={{ icon: 'search', color: 'teal' }}
-        
-        placeholder='Busqueda de producto...' />
-
-        </Segment>
+      <SearchForm/>
         <br/>
+        </Segment>>
     </div>
     )
     

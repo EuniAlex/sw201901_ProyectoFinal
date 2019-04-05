@@ -16,7 +16,7 @@ function Product(props) {
           <Label>{props.marca}</Label>
           <Label>{props.modelo}</Label>
           <Label>{props.year}</Label>
-          <Label>{props.status}disponibles en stock</Label>
+          <Label>{props.status}  disponibles en stock</Label>
         </Card.Description>
       </Card.Content>
       <Card.Content extra>

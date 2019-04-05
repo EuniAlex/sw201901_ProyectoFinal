@@ -59,6 +59,32 @@ function catalogoModelInit(db){
           }
         }); //insert One
       }// addNewPro
+
+      lib.searchByTag = (tags, handler)=>{
+        var queryObject= {"tags": {"$in": Array.isArray(tags)? tags: [tags]}};
+        cat.find(queryObject).toArray((err, docs) => {
+          if(err){
+            handler(err, null);
+          }else{
+            handler(null, docs);
+          }
+        }); //toArray
+      } 
+
+      lib.addTags = (tags, id , handler) => {
+        var curatedTags = Array.isArray(tags)? tags: [tags];
+        var updateObject = { "$set": { "tags": curatedTags}};
+        cat.updateOne({"_id": ObjectId(id)}, updateObject, (err, rsult)=>{
+            if(err){
+              handler(err, null);
+            }else{
+              handler(null, rsult.result);
+            }
+        } ); // updateOne
+      } // addTagsToThing
+
+      
+
     return lib;
 }
 

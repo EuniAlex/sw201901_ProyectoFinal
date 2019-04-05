@@ -143,27 +143,12 @@ class App extends Component {
       .catch( (err)=>{
         alert(err);
       });
-
-      axios.get('api/catalogo/GProByYEAR/:year')
-      .then((resp)=>{
-        console.log(resp);
-          this.setState({products:resp.data, isLoading:false});
-      })
-      .catch( (err)=>{
-        alert(err);
-      });
   }
 
   render() {
     return (
       <Container className={style.root}>
-      
-      <div className='busque'> 
-      <Segment>
-      <div className='titulo'><Titulo/></div>
-        </Segment>
-        <br/>
-    </div>
+        <Menu/>
         <Grid>
          
           { (this.state.isLoading)?"...Cargando": null}

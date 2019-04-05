@@ -1,23 +1,24 @@
-import React from 'react';
-import { Input, Button } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react';
+
+import { Input} from 'semantic-ui-react';
 
 
 
 
+class searchForm extends Component {
 
-function searchForm (props) {
-    return(
+  render() {
+
+    return( 
       <Input
         action={{ icon: 'search', color: 'teal' }}
         
         placeholder='Busqueda de producto...' />
 
-
     )
+    
+  }
+  
 }
-
-
 
 export default searchForm;
