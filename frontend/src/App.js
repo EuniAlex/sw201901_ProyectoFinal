@@ -5,7 +5,11 @@ import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
+<<<<<<< HEAD
 import Catalogo from './Components/pages/catalogo/App/App'
+=======
+import Catalogo from './Components/pages/catalogo/Catalogo';
+>>>>>>> 3a1ea254a7f3853db6dc5cd6b7ddd37488797858
 import './App.css';
 
 function Home(){
@@ -15,6 +19,7 @@ function Home(){
 class App extends Component{
   render (){
     return (
+<<<<<<< HEAD
       <Router>
         <div className="App">
           <nav className="Nav">
@@ -23,6 +28,16 @@ class App extends Component{
             <li><Link to="/signin">SignIn</Link> </li>
             <li><Link to="/login">Login</Link> </li>
             <li><Link to="/catalogo">Catalogo</Link> </li>
+=======
+      <Router>        
+        <div className="app">
+          <nav className="nav">
+            <a><Link to="/">Home</Link> </a>
+            <a><Link to="/encuesta">Encuesta</Link> </a>
+            <a><Link to="/signin">SignIn</Link> </a>
+            <a><Link to="/login">Login</Link> </a>
+            <a><Link to="/catalogo">Catalogo</Link></a>
+>>>>>>> 3a1ea254a7f3853db6dc5cd6b7ddd37488797858
           </nav>
             <Route path="/" exact component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
