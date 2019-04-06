@@ -4,8 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
+var session = require('express-session');
+var MongoSessionStore=require('connect-mongodb-session')(session);
 
 function appInit(db) {
+    var sessionStore = new MongoSessionStore(
+      {
+        uri : 'mongodb://localhost:27017/obtsessionstore',
+        databaseName: 'obtsessionstore',
+        collection: 'sessiones'
+      },
+      function(err){
+        if(err){
+          console.log(err);
+        }else{
+          console.log("Session Storage OK");
+        }
+      }
+    )
 
     var indexRouter = require('./routes/index');
     var apiRouter = require('./routes/api');
@@ -20,6 +36,16 @@ function appInit(db) {
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());
+
+    app.use(session({
+      secret:'apexfortnitebrawthingcoso',
+      cookie:{
+        maxAge: 1000 * 60 * 60 * 24 * 365,
+      },
+      store:sessionStore,
+      resave: true,
+      saveUninitialized: true
+    }));
     app.use(lessMiddleware(path.join(__dirname, 'public')));
     app.use(express.static(path.join(__dirname, 'public')));
 
