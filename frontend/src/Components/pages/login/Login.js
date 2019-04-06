@@ -4,11 +4,7 @@ import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
 import {Redirect, Link} from 'react-router-dom';
-
-
 import "./Login.css";
-
-
 import axios from 'axios';
 
 /**
@@ -24,6 +20,7 @@ class Login extends Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
   }
+  
   render() {
     if (this.state.redirecto && true){
       return (<Redirect to={this.props.location.state.from.pathname} />);
@@ -68,14 +65,11 @@ class Login extends Component {
   onClickHandler(e){
     e.preventDefault();
     e.stopPropagation();
-    console.log("holi");
-    axios.get(
-      `/api/users/login/${this.state.txtEmail}`,
+    axios.post(
+      `/api/users/login`,
       {"email":this.state.txtEmail,"pswd":this.state.txtPswd}
     ).then( (resp)=>{
-      console.log("holi1");
       if(resp.data.msg === "ok"){
-        console.log("holi2");
         this.props.auth.setAuthState(
           {
             "isAuthenticated": true,
@@ -86,7 +80,6 @@ class Login extends Component {
         this.setState({"redirecto": true});
       }
     }).catch( (err) => {
-      console.log("holi3");
       alert(err);
     } );
   }
