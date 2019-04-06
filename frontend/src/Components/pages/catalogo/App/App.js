@@ -5,7 +5,7 @@ import ProductList from '../ProductList';
 import CartList from '../CartList';
 import Order from '../Order';
 import style from '../App/App.css';
-// import 'semantic-ui-css/semantic.min.css'
+
 
 class App extends Component {
   constructor(props) {

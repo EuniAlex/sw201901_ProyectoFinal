@@ -1,40 +1,95 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import React, { Component } from "react";
 
+
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
-import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
 import Catalogo from './Components/pages/catalogo/App/App';
+import home from './Components/pages/home/home';
+import {
+  Button,
+  Container,
+  Dropdown,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Menu,
+  Segment
+} from "semantic-ui-react";
 
-import './App.css';
+//import "semantic-ui-css/semantic.min.css";
 
-function Home(){
-  return (<h1>Home</h1>)
-}
 
-class App extends Component{
-  render (){
+
+import "./App.css";
+
+class App extends Component {
+ /* state = {
+    dropdownMenuStyle: {
+      display: "none"
+    }
+  };
+
+  handleToggleDropdownMenu = () => {
+    let newState = Object.assign({}, this.state);
+    if (newState.dropdownMenuStyle.display === "none") {
+      newState.dropdownMenuStyle = { display: "flex" };
+    } else {
+      newState.dropdownMenuStyle = { display: "none" };
+    }
+
+    this.setState(newState);
+  };*/
+
+  render() {
+    
+
     return (
-      <Router>        
-        <div className="app">
-          <nav className="nav">
-            <a><Link to="/">Home</Link> </a>
-            <a><Link to="/encuesta">Encuesta</Link> </a>
-            <a><Link to="/signin">SignIn</Link> </a>
-            <a><Link to="/login">Login</Link> </a>
-            <a><Link to="/catalogo">Catalogo</Link></a>
-          </nav>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/encuesta" component={Encuesta}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/signin" component={SignIn}></Route>
-            <Route path="/catalogo" component={Catalogo}></Route>
-          <Footer></Footer>      
-        </div>
+      <div className="App">
+        <Grid padded className="tablet computer only">
+          <Container>
+            <Router>
+            <Menu borderless inverted size="huge">
+              <Menu.Item   as={Link} to="/" content="Home">
+                MaxiRepuestos
+              </Menu.Item>
+              <Menu.Item active as={Link} to="/" content="Home"/>
+              <Menu.Item as={Link} to="/encuesta" content="Encuesta"/>
+              <Menu.Item as={Link} to="/signin" content="Signin"/>
+              <Menu.Item as={Link} to="/login" content="Login"/>
+              <Menu.Item as={Link} to="/catalago" content="Catálogo"/> 
+            </Menu>
+          <Switch>
+            <Route path="/" exact component={home}></Route>
+            <Route path="/encuesta" exact component={Encuesta}></Route>
+            <Route path="/login" exact component={Login}></Route>
+            <Route path="/signin" exact component={SignIn}></Route>
+            <Route path="/catalogo" exact component={Catalogo}></Route>
+          </Switch> 
       </Router>
+          </Container>
+        </Grid>
+        
+      </div>
     );
   }
 }
 
+
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
