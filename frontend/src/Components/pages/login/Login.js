@@ -3,6 +3,8 @@ import Header from '../../generics/header/Header';
 import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
+import {Redirect, Link} from 'react-router-dom';
+
 
 import "./Login.css";
 
@@ -23,6 +25,9 @@ class Login extends Component {
     this.onClickHandler = this.onClickHandler.bind(this);
   }
   render() {
+    if (this.state.redirecto && true){
+      return (<Redirect to={this.props.location.state.from.pathname} />);
+    }
     return (
       <div>
         <Header title="Inicio de Sesión"></Header>
@@ -63,13 +68,25 @@ class Login extends Component {
   onClickHandler(e){
     e.preventDefault();
     e.stopPropagation();
-    //alert("Ohh hice click");
-    axios.post(
-      '/api/users/login',
-      {...this.state}
+    console.log("holi");
+    axios.get(
+      `/api/users/login/${this.state.txtEmail}`,
+      {"email":this.state.txtEmail,"pswd":this.state.txtPswd}
     ).then( (resp)=>{
-      alert(resp);
+      console.log("holi1");
+      if(resp.data.msg === "ok"){
+        console.log("holi2");
+        this.props.auth.setAuthState(
+          {
+            "isAuthenticated": true,
+            "user": this.state.txtEmail,
+            "firstVerified": true
+          }
+        );
+        this.setState({"redirecto": true});
+      }
     }).catch( (err) => {
+      console.log("holi3");
       alert(err);
     } );
   }
