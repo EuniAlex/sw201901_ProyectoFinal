@@ -5,7 +5,7 @@ import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import SignIn from './Components/pages/signin/Signin';
 import Catalogo from './Components/pages/catalogo/App/App';
-import home from './Components/pages/home/home';
+import home from './Components/pages/home/Home';
 import {
   Button,
   Container,
