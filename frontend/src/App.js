@@ -5,12 +5,13 @@ import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
-import Catalogo from './Components/pages/catalogo/App/App'
+import Catalogo from './Components/pages/catalogo/App/App';
+import Home from './Components/pages/home/Home';
 import './App.css';
 
-function Home(){
-  return (<h1>Home</h1>)
-}
+// function Home(){
+//   return (<h1>Home</h1>)
+// }
 
 class App extends Component{
   render (){
@@ -18,13 +19,13 @@ class App extends Component{
       <Router>
         <div className="App">
           <nav className="nav">
-            <a><Link to="/">Home</Link> </a>
+            <a><Link to="/home">Home</Link> </a>
             <a><Link to="/encuesta">Encuesta</Link> </a>
             <a><Link to="/signin">Sign In</Link> </a>
             <a><Link to="/login">Login</Link> </a>
             <a><Link to="/catalogo">Catalogo</Link> </a>
           </nav>
-            <Route path="/" exact component={Home}></Route>
+            <Route path="/home" component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/signin" component={SignIn} />

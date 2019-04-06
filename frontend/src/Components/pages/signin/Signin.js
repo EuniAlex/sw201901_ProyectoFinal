@@ -4,7 +4,13 @@ import Header from '../../generics/header/Header';
 import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
+import Login from '../login/Login';
 import axios from 'axios';
+
+const divStyle = {
+  textAlign: 'center'
+  
+};
 
 class Signin extends Component{
 
@@ -45,8 +51,9 @@ class Signin extends Component{
   render(){
      if(this.state.redirectTo!==""){
        return(
-          <div>
-            <Link to={this.state.redirectTo}>Esoooooooo</Link>
+          <div style={divStyle}>
+            <h1>Gracias por registrarse</h1>
+            <Login></Login>
          </div>
         )
      }
