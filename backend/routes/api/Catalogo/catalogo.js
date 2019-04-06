@@ -10,6 +10,9 @@ function catalogoInit(db){
       'marca':'',
       'modelo':'',
       'year':'',
+      'stock':'',
+      'precio':'',
+      'image':''
     };
 
     router.post('/new', function(req,res,next){
@@ -66,6 +69,27 @@ function catalogoInit(db){
         return res.status(200).json(Doc);
     }); //GetProdByYEAR
 })
+
+  router.get('/GProByTags/:tag', (req, res, next)=>{
+    catalogoModel.searchByTag((req.params.tag || '').split('_'), (err, docs)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).json({"error":"No se encontro documento"});
+      }else{
+        return res.status(200).json(docs);
+      }
+    } ); //searchByTag
+  });// by tag
+
+  router.put('/addtags/:id', (req, res, next)=>{
+    catalogoModel.addTags((req.body.tags || '').split('|'), req.params.id, (err, rsult)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).json({"error":"No se puede actualizar el documento"});
+      }
+      return res.status(200).json(rsult);
+    });// end addTagsToThing
+  });// addtags
 
     return router;
 }

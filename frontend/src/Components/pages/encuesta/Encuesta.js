@@ -4,6 +4,7 @@ import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
 import {Link} from 'react-router-dom';
+import Home from '../home/Home';
 import axios from 'axios';
 
 class Encuesta extends Component {
@@ -54,7 +55,7 @@ class Encuesta extends Component {
                 console.log(this.state.respuesta3, this.state.rbrespuesta3);
                 console.log(this.state.respuesta4, this.state.rbrespuesta4);
                 //this.setState({error:this.state.respuesta1})
-                this.setState({redirectTo:"/catalogo"});
+                this.setState({redirectTo:"/home"});
             }
         )
         .catch(
@@ -68,7 +69,7 @@ class Encuesta extends Component {
         if(this.state.redirectTo!==""){
             return(
                 <div>
-                    <Link to={this.state.redirectTo}>Muchas gracias por tu opinion</Link>
+                    <Home></Home>
                 </div>
             )
         }

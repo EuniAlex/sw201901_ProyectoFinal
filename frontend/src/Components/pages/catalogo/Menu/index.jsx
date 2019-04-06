@@ -13,9 +13,9 @@ class Navigation extends Component {
       <div className='busque'> 
       <Segment>
       <div className='titulo'><Titulo/></div>
-        <SearchForm/>
-        </Segment>
+      <SearchForm/>
         <br/>
+        </Segment>>
     </div>
     )
     

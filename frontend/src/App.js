@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
-
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import PrivateRoute from './Components/generics/privateroute/PrivateRoute';
 import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import SignIn from './Components/pages/signin/Signin';

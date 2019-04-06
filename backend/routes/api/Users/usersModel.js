@@ -1,4 +1,4 @@
-var ObjectId = require("mongodb").ObjectID;
+var ObjectID= require("mongodb").ObjectID;
 
 function usersModel(db){
     var lib = {};
@@ -13,6 +13,16 @@ function usersModel(db){
             }
         });
     }//end of addNewUser
+
+    lib.getloginUser = (email, handler)=>{
+        query.findOne({ "email": (email)}, (err, doc)=>{
+            if(err){
+              handler(err, null);
+            }else{
+              handler(null, doc);
+            }
+          }); // findOne
+      } // getloginUser
 
     return lib;
 }
