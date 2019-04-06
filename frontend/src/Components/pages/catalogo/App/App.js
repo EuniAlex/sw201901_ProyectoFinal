@@ -133,14 +133,14 @@ class App extends Component {
       )
     }
   }
-  componentDidMount(){
+   componentDidMount(){
     this.setState({isLoading:true});
-      axios.get('api/catalogo/GPro')
-      .then((resp)=>{
-        console.log(resp);
-          this.setState({products:resp.data, isLoading:false});
-      })
-      .catch( (err)=>{
+       axios.get('api/catalogo/GPro')
+       .then((resp)=>{
+         console.log(resp);
+           this.setState({products:resp.data, isLoading:false});
+       })
+       .catch( (err)=>{
         alert(err);
       });
   }

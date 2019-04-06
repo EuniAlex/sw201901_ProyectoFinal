@@ -6,9 +6,18 @@ function apiInit(db){
     var encuestaApi = require('./api/Encuesta/encuesta')(db);
     var catApi = require('./api/Catalogo/catalogo')(db);
 
+    function verfiUser(req, res, next){
+        var isLogedIn = req.session.logged && true;
+        if(isLogedIn){
+            next();
+        }else{
+            res.status(403).json({"error":"No Autorizado"});
+        }
+    }
+
     router.use('/users',usersApi);
-    router.use('/catalogo',catApi);
-    router.use('/encuesta',encuestaApi);
+    router.use('/catalogo',verfiUser,catApi);
+    router.use('/encuesta',verfiUser,encuestaApi);
 
     return router;
 }

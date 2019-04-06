@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import PrivateRoute from './Components/generics/privateroute/PrivateRoute';
 import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
@@ -14,6 +14,18 @@ import './App.css';
 // }
 
 class App extends Component{
+  constructor(){
+    super();
+    this.state={
+      isAuthenticated : false,
+      user:null,
+      firstVerified:false
+    }
+    this.setAuthState = this.setAuthState.bind(this);
+  }
+  setAuthState(authProps){
+    this.setState(authProps);
+  }
   render (){
     return (
       <Router>
@@ -27,9 +39,9 @@ class App extends Component{
           </nav>
             <Route path="/home" component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
-            <Route path="/login" component={Login}></Route>
+            <Route path="/login" render={(p)=>(<Login {...p} auth={{...this.state, setAuthState:this.setAuthState}}/>)}/>
             <Route path="/signin" component={SignIn} />
-            <Route path="/catalogo" component={Catalogo} />
+            <PrivateRoute path="/catalogo" component={Catalogo} auth={this.state}/>
           <Footer></Footer>      
         </div>
       </Router>
