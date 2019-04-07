@@ -1,94 +1,51 @@
-import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import PrivateRoute from './Components/generics/privateroute/PrivateRoute';
 import Encuesta from './Components/pages/encuesta/Encuesta';
 import Login from './Components/pages/login/Login';
+import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
 import Catalogo from './Components/pages/catalogo/App/App';
-import home from './Components/pages/home/Home';
-import {
-  Button,
-  Container,
-  Dropdown,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  Menu,
-  Segment
-} from "semantic-ui-react";
+import Home from './Components/pages/home/Home';
+import './App.css';
 
-//import "semantic-ui-css/semantic.min.css";
+// function Home(){
+//   return (<h1>Home</h1>)
+// }
 
-
-
-import "./App.css";
-
-class App extends Component {
- /* state = {
-    dropdownMenuStyle: {
-      display: "none"
+class App extends Component{
+  constructor(){
+    super();
+    this.state={
+      isAuthenticated : false,
+      user:null,
+      firstVerified:false
     }
-  };
-
-  handleToggleDropdownMenu = () => {
-    let newState = Object.assign({}, this.state);
-    if (newState.dropdownMenuStyle.display === "none") {
-      newState.dropdownMenuStyle = { display: "flex" };
-    } else {
-      newState.dropdownMenuStyle = { display: "none" };
-    }
-
-    this.setState(newState);
-  };*/
-
-  render() {
-    
-
+    this.setAuthState = this.setAuthState.bind(this);
+  }
+  setAuthState(authProps){
+    this.setState(authProps);
+  }
+  render (){
     return (
-      <div className="App">
-        <Grid padded className="tablet computer only">
-          <Container>
-            <Router>
-            <Menu borderless inverted size="huge">
-              <Menu.Item   as={Link} to="/" content="Home">
-                MaxiRepuestos
-              </Menu.Item>
-              <Menu.Item active as={Link} to="/" content="Home"/>
-              <Menu.Item as={Link} to="/encuesta" content="Encuesta"/>
-              <Menu.Item as={Link} to="/signin" content="Signin"/>
-              <Menu.Item as={Link} to="/login" content="Login"/>
-              <Menu.Item as={Link} to="/catalago" content="Catálogo"/> 
-            </Menu>
-          <Switch>
-            <Route path="/" exact component={home}></Route>
-            <Route path="/encuesta" exact component={Encuesta}></Route>
-            <Route path="/login" exact component={Login}></Route>
-            <Route path="/signin" exact component={SignIn}></Route>
-            <Route path="/catalogo" exact component={Catalogo}></Route>
-          </Switch> 
+      <Router>
+        <div className="App">
+          <nav className="nav">
+            <a><Link to="/home">Home</Link> </a>
+            <a><Link to="/encuesta">Encuesta</Link> </a>
+            <a><Link to="/signin">Sign In</Link> </a>
+            <a><Link to="/catalogo">Catalogo</Link> </a>
+          </nav>
+            <Route path="/home" component={Home}></Route>
+            <Route path="/encuesta" component={Encuesta}></Route>
+            <Route path="/login" render={(p)=>(<Login {...p} auth={{...this.state, setAuthState:this.setAuthState}}/>)}/>
+            <Route path="/signin" component={SignIn} />
+            <PrivateRoute path="/catalogo" component={Catalogo} auth={this.state}/>
+          <Footer></Footer>      
+        </div>
       </Router>
-          </Container>
-        </Grid>
-        
-      </div>
     );
   }
 }
 
-
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
