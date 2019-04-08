@@ -10,23 +10,25 @@ function usersInit(db){
         'pswd':''
     };
     
-    router.post('/new',function(req, res, next){
-        var _usersData = Object.assign({} , infoUsuarios, req.body);
-        if(usersModel.getloginUser(_userData)!==true){
-
-            usersModel.addNewUser(_usersData, (err, newUser)=>{
-                if(err){
-                    console.log(err);
-                    return res.status(500).json({"error":"No se pudo agregar usuario"});
-                }else{
-                    return res.status(200).json(newUser);
-                }
-            });
-        }else{
-            console.log("Usuario Existente");
-            return res.status(500).json({"error":"Usuario existente"});
-        }
-        
+    router.post('/new', function(req, res, next){
+        var _userData = Object.assign({} , infoUsuarios, req.body);
+        console.log(_userData.email);
+        usersModel.getloginUser(_userData.email,(err,userData)=>{
+             if(err){
+                res.status(403).json({"error":"Credenciales no validas"});
+             }else if(userData !== null){
+                  res.status(403).json({"error":"Usuario ya existe"});
+             }else{
+                usersModel.addNewUser(_userData, (err, newUser)=>{
+                    if(err){
+                        console.log(err);
+                        return res.status(404).json({"error":"No se pudo agregar usuario"});
+                    }else{
+                        return res.status(200).json(newUser);
+                    }
+                });
+             }
+        });
     });//post new
     
     router.post('/login', function(req,res,next){
@@ -45,7 +47,7 @@ function usersInit(db){
                     res.status(200).json({"msg":"ok"});
             }
         });
-    });
+    });//post login
     
 
     // router.get('/loginUser/:email', function (req, res, next) {

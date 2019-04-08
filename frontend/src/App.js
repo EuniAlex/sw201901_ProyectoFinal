@@ -35,7 +35,9 @@ class App extends Component{
             <a><Link to="/encuesta">Encuesta</Link> </a>
             <a><Link to="/signin">Sign In</Link> </a>
             <a><Link to="/catalogo">Catalogo</Link> </a>
+            <a><Link to="/login">Log In</Link> </a>
           </nav>
+            {/* <Route path="/" component={Home}></Route> */}
             <Route path="/home" component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
             <Route path="/login" render={(p)=>(<Login {...p} auth={{...this.state, setAuthState:this.setAuthState}}/>)}/>

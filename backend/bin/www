@@ -21,7 +21,7 @@ mongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true }, func
    * Get port from environment and store in Express.
    */
 
-  var port = normalizePort(process.env.PORT || '3501');
+  var port = normalizePort(process.env.PORT || '3500');
   app.set('port', port);
 
   /**

@@ -9,7 +9,6 @@ import axios from 'axios';
 
 const divStyle = {
   textAlign: 'center'
-  
 };
 
 class Signin extends Component{
@@ -32,11 +31,11 @@ class Signin extends Component{
     e.preventDefault();
     e.stopPropagation();
     axios.post(
-        `api/users/new`,
+        'api/users/new',
         {
-          email:this.state.txtEmail,
-          pswd:this.state.txtPswd
-        }
+          "email":this.state.txtEmail,
+          "pswd":this.state.txtPswd
+        },
       ).then(
         (resp)=>{
           this.setState({ redirectTo:"/login"});
@@ -44,6 +43,7 @@ class Signin extends Component{
       )
       .catch(
         (err)=>{
+          alert("Usuario ya existe");
           this.setState({error:err});
         }
       );
