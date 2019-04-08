@@ -6,7 +6,7 @@ import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
 import Catalogo from './Components/pages/catalogo/App/App';
-import Home from './Components/pages/home/home';
+import Home from './Components/pages/home/Home';
 import './App.css';
 
 // function Home(){
