@@ -1,8 +1,10 @@
 var ObjectID= require("mongodb").ObjectID;
+var user = require("mongodb").user;
 
 function usersModel(db){
     var lib = {};
     var query = db.collection('usuarios');
+
 
     lib.addNewUser = (newUser, handler)=>{
         query.insertOne(newUser, (err,r)=>{

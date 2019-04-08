@@ -46,6 +46,7 @@ function appInit(db) {
       resave: true,
       saveUninitialized: true
     }));
+    
     app.use(lessMiddleware(path.join(__dirname, 'public')));
     app.use(express.static(path.join(__dirname, 'public')));
 
