@@ -6,7 +6,7 @@ import Login from './Components/pages/login/Login';
 import Footer from './Components/generics/footer/Footer';
 import SignIn from './Components/pages/signin/Signin';
 import Catalogo from './Components/pages/catalogo/App/App';
-import Home from './Components/pages/home/home';
+import Home from './Components/pages/home/Home';
 import './App.css';
 
 // function Home(){
@@ -35,9 +35,7 @@ class App extends Component{
             <a><Link to="/encuesta">Encuesta</Link> </a>
             <a><Link to="/signin">Sign In</Link> </a>
             <a><Link to="/catalogo">Catalogo</Link> </a>
-            <a><Link to="/login">Log In</Link> </a>
           </nav>
-            {/* <Route path="/" component={Home}></Route> */}
             <Route path="/home" component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
             <Route path="/login" render={(p)=>(<Login {...p} auth={{...this.state, setAuthState:this.setAuthState}}/>)}/>

@@ -4,7 +4,7 @@ import Body from '../../generics/body/Body';
 import Input from '../../generics/input/Input';
 import Label from '../../generics/label/Label';
 import {Link} from 'react-router-dom';
-import Home from '../home/Home';
+import Home from '../home/home';
 import axios from 'axios';
 
 class Encuesta extends Component {
