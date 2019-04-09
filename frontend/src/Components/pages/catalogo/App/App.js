@@ -3,7 +3,6 @@ import { Container, Grid, Header ,Segment, Input } from 'semantic-ui-react';
 import Menu from '../Menu';
 import ProductList from '../ProductList';
 import CartList from '../CartList';
-import Order from '../Order';
 import style from '../App/App.css';
 import Titulo from '../titulo/titulo'
 import '../Menu/style.css';
@@ -29,7 +28,6 @@ class App extends Component {
     this.handleSaveProduct = this.handleSaveProduct.bind(this)
     this.handlerAddProduct = this.handlerAddProduct.bind(this)
     this.handlerRemoveProduct = this.handlerRemoveProduct.bind(this)
-    this.handlerOpenOrder = this.handlerOpenOrder.bind(this)
     this.handlerClearCart = this.handlerClearCart.bind(this)
   }
 
@@ -118,38 +116,16 @@ class App extends Component {
     }
   }
 
-  handlerOpenOrder(event) {
-    event.preventDefault()
-    this.setState({ openOrder: true })
-  }
 
-  renderOpenOrder() {
-    if (this.state.openOrder) {
-      return (
-        <Order
-          sum={this.state.sum}
-          onClearCart={this.handlerClearCart}
-        />
-      )
-    }
-  }
-   componentDidMount(){
-    this.setState({isLoading:true});
-       axios.get('api/catalogo/GPro')
-       .then((resp)=>{
-         console.log(resp);
-           this.setState({products:resp.data, isLoading:false});
-       })
-       .catch( (err)=>{
-        alert(err);
-      });
-  }
+
+
+
 
   render() {
     return (
       <Container className={style.root}>
         <Menu/>
-        <Grid>
+        {/* <Grid>
          
           { (this.state.isLoading)?"...Cargando": null}
           <Grid.Column width={12}>
@@ -166,7 +142,7 @@ class App extends Component {
             />
             {this.renderOpenOrder()}
           </Grid.Column>
-        </Grid>
+        </Grid> */}
       </Container>
     )
   }
