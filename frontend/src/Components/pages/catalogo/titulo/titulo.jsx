@@ -1,12 +1,18 @@
 import React from 'react'
+import Image from './maxi.jpg'
 
+const Imgstyle = {
+
+    height: '20%',
+    width: '50%'
+}
 
 
 function titulo (props) {
   
         return( 
 
-        <h1>MaxiRepuestos</h1>
+        <img style={Imgstyle} src={Image}/>
         
             )
     

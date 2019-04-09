@@ -16,8 +16,8 @@ function usersModel(db){
         });
     }//end of addNewUser
 
-    lib.getloginUser = (email, handler)=>{
-        query.findOne({ "email": (email)}, (err, doc)=>{
+    lib.getloginUser = (email,pswd, handler)=>{
+        query.findOne({ "email": (email),"pswd":(pswd)}, (err, doc)=>{
             if(err){
               handler(err, null);
             }else{

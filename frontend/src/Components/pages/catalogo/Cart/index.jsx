@@ -6,11 +6,11 @@ function Cart(props){
   return(
     <Feed>
       <Feed.Event>
-        <Feed.Label image={props.img} />
+        {/* <Feed.Label image={props.img} /> */}
         <Feed.Content>
           <Feed.Date content={props.name} />
-          <Feed.Summary>
-            Lps {props.total} ({props.order} productos)
+          <Feed.Summary> 
+            Lps {props.total} (products)
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

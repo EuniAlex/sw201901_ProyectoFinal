@@ -9,9 +9,7 @@ import Catalogo from './Components/pages/catalogo/App/App';
 import Home from './Components/pages/home/Home';
 import './App.css';
 
-// function Home(){
-//   return (<h1>Home</h1>)
-// }
+ 
 
 class App extends Component{
   constructor(){
@@ -36,6 +34,7 @@ class App extends Component{
             <a><Link to="/signin">Sign In</Link> </a>
             <a><Link to="/catalogo">Catalogo</Link> </a>
           </nav>
+          
             <Route path="/home" component={Home}></Route>
             <Route path="/encuesta" component={Encuesta}></Route>
             <Route path="/login" render={(p)=>(<Login {...p} auth={{...this.state, setAuthState:this.setAuthState}}/>)}/>

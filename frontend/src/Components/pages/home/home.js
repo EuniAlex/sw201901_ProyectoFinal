@@ -1,5 +1,6 @@
 import React ,{Component} from 'react';
 import Slider from "react-slick";
+import ReactDOM from 'react-dom';
 import {
     Button,
     Container,
@@ -11,9 +12,8 @@ import {
     Menu,
     Segment
   } from "semantic-ui-react";
-
-
-
+  import '../../../App.css';
+  
 class home extends Component{
     state = {
         dropdownMenuStyle: {
@@ -106,9 +106,7 @@ class home extends Component{
                 <Container>
                 <Segment vertical>
                     <Grid container stackable textAlign="center" columns={3}>
-                    <Grid.Column>
-                    <br/>
-                    <br/>
+                    <Grid.Column> 
                         <Image
                         centered
                         circular

@@ -7,6 +7,7 @@ body {
   overflow: hidden;
   background-color: #333;
   padding-left: 34%;
+ 
 }
 
 .nav a {
@@ -15,12 +16,12 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 17px; 
 }
 
 .nav a:hover {
   background-color: #ddd;
-  color: black;
+  color: black; 
 }
 
 .h1{

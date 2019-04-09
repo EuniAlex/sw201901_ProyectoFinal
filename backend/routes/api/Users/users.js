@@ -34,7 +34,8 @@ function usersInit(db){
     router.post('/login', function(req,res,next){
         var _userData = req.body;
         console.log(_userData.email);
-        usersModel.getloginUser(_userData.email,(err,userData)=>{
+        usersModel.getloginUser(_userData.email,_userData.pswd,(err,userData)=>{
+            console.log(_userData);
             if(err){
                 res.status(403).json({"error":"Credenciales no validas"});
             }else if(userData == null){
@@ -45,6 +46,7 @@ function usersInit(db){
                     req.session.logged =true;
                     req.session.loggeduser = _userData.email;
                     res.status(200).json({"msg":"ok"});
+                    console.log(_userData);
             }
         });
     });//post login

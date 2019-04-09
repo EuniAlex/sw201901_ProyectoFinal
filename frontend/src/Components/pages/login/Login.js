@@ -6,6 +6,8 @@ import Label from '../../generics/label/Label';
 import {Redirect, Link} from 'react-router-dom';
 import "./Login.css";
 import axios from 'axios';
+import Navigation from '../catalogo/Menu';
+import Order from '../catalogo/Order';
 
 /**
  inputBlurHandler={(e)=>{alert(e.currentTarget.name)}}
@@ -28,11 +30,15 @@ class Login extends Component {
     return (
       <div>
         <Header title="Inicio de Sesión"></Header>
-        <Body>
+        <Body >
           <fieldset className="Fieldset">
           <Label
             Label = "Correo Electrónico"
           />
+          {/* <Navigation 
+            userId={this.state.txtEmail}
+          /> */}
+         
           <Input className = "input"
               inputName="txtEmail"
               inputType="email"
@@ -76,6 +82,7 @@ class Login extends Component {
             "user": this.state.txtEmail,
             "firstVerified": true
           }
+          
         );
         this.setState({"redirecto": true});
       }

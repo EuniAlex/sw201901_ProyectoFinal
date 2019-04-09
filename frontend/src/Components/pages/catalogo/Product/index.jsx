@@ -6,7 +6,7 @@ import { Card, Image, Label, Button } from 'semantic-ui-react'
 function Product(props) {
   return(
     <Card style={{ marginTop: 15 }}>
-      <Image size="small" src=""/>
+      <Image size="big" src={props.picture}/>
       <Card.Content>
         <Card.Header style={{fontSize: 15}}>{props.name}</Card.Header>
         <Card.Meta>
@@ -31,7 +31,7 @@ function Product(props) {
         </Button>
       </Card.Content>
       <Card.Content extra>
-        <Button.Group floated='right'>
+        {/* <Button.Group floated='right'>
           <Button
             compact
             onClick={props.onIncrementProduct}
@@ -40,7 +40,7 @@ function Product(props) {
             compact
             onClick={props.onRemoveProduct}
             >-</Button>
-        </Button.Group>
+        </Button.Group> */}
       </Card.Content>
     </Card>
   )

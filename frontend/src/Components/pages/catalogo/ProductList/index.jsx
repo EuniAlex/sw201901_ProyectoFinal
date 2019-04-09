@@ -20,9 +20,9 @@ function ProductList(props) {
                   modelo={p.modelo}
                   marca={p.marca}
                   status={p.stock}
-                  onSaveProduct={() => props.onSaveProduct(p.id)}
-                  onIncrementProduct={() => props.onIncrementProduct(p.id)}
-                  onRemoveProduct={() => props.onRemoveProduct(p.id)}
+                  onSaveProduct={() => props.onSaveProduct(p._id)}
+                  onIncrementProduct={() => props.onIncrementProduct(p._id)}
+                  onRemoveProduct={() => props.onRemoveProduct(p._id)}
                 />
               </Grid.Column>
             )
